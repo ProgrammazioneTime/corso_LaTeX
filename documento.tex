@@ -1,0 +1,804 @@
+\documentclass[a4paper,12pt,oneside]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top = 3cm, bottom = 3cm, left = 3.5cm, right = 3.5cm, heightrounded, bindingoffset = 5mm}
+\pagestyle{plain}
+\usepackage{xcolor}
+%\usepackage{erewhon}
+\usepackage{quoting}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{hidelinks}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+%\graphicspath{./nomecartella}
+\usepackage{sidecap}
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[autostyle,italian=guillemets]{csquotes}
+%\usepackage[backend=biber]{biblatex}
+%\usepackage[bibstyle=authortitle,citestyle=verbose-trad1]{biblatex}
+%\usepackage[style=alphabetic]{biblatex}
+\usepackage[style=authoryear-comp]{biblatex}
+%\usepackage[bibstyle=authoryear,citestyle=authoryear-comp]{biblatex}
+\usepackage{imakeidx}
+
+
+\title{Corso YouTube per il\\linguaggio \LaTeX}
+\author{Programmazione Time \thanks{Un ringraziamento speciale ai miei iscritti.}}
+\date{22 settembre 2021}	% date{}
+
+
+%\setcounter{secnumdepth}{3}
+%\setcounter{tocdepth}{1}
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\addbibresource{database.bib}
+\makeindex
+\newcommand{\predefinito}{\colorbox{orange}{Questo comando è predefinito}}
+\newcommand{\comando}[1]{\textit{\textbf{#1}}}
+\newenvironment{corsivo}{\begin{itemize}\itshape}{\end{itemize}}
+
+
+\begin{document}
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+
+	\frontmatter
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\mainmatter
+	
+	\part{Prima parte}
+	\chapter{Primo capitolo}
+	Questo è il primo capitolo.
+	\section{Prima sezione}
+	Questa è la prima sezione.
+	\subsection{Prima sottosezione}
+	Questa è la prima sottosezione.
+	\subsubsection{Prima sotto-sottosezione (non indicizzata)}
+	Dalla sotto-sottosezione in poi non vengono più indicizzata nell'indice.
+	\paragraph{Primo paragrafo}
+	Questo è un paragrafo.
+	\subparagraph{Primo sottoparagrafo}
+	Primo documento in \LaTeX creato grazie al video di Programmazione Time.
+	
+	
+	\section*{Non numerata}
+	\addcontentsline{toc}{section}{Non numerata}
+	Questa sezione non è numerata e non è presente nell'indice poiché si è aggiunto l'asterisco.
+	
+	
+	
+	\chapter{Gestione del testo}
+	\section{Capoversi}
+	\subsection{Metodi di creazione}
+	\subsubsection{Metodo 1:}
+	Il \emph{capoverso}\index{capoverso} segnala l'inizio di un nuovo argomento.
+	
+	Questo è un capoverso generato saltando una riga nell'editor.
+	
+	\subsubsection{Metodo 2:}
+	Il capoverso segnala l'inizio di un nuovo argomento.
+	\par Questo è un capoverso generato con l'utilizzo del comando \textbf{$\backslash$par}.
+	
+	\subsubsection{Metodo 3:}
+	Il capoverso segnala l'inizio di un nuovo argomento.\newline
+	\newline
+	Questo è un capoverso senza rientro generato utilizzando il doppio $\backslash\backslash$.\\
+	\\
+	\par Questo è un capoverso con rientro generato utilizzando \textbf{$\backslash$par} e il doppio $\backslash\backslash$.
+	
+	
+	\subsection{Altro sui capoversi}
+	\subsubsection{Eliminazione del rientro}
+	Il capoverso segnala l'inizio di un nuovo argomento.
+	
+	\noindent Questo è un capoverso senza il rientro con il comando \textbf{$\backslash$noindent}.
+	
+	\subsubsection{Gestione dello spazio verticale}
+	Il capoverso segnala l'inizio di un nuovo argomento.
+	
+	\vspace{15pt} Questo è un capoverso con spazio gestito da \textbf{$\backslash$vspace}.
+	
+	
+	\section{Decorazione testo}\label{sec:testo}
+	\emph{Stile EVIDENZIATO tramite il comando}: $\backslash$emph.\\
+	{\em Stile EVIDENZIATO tramite la dichiarazione}: $\backslash$em.\\
+	\\
+	\textit{Stile CORSIVO tramite il comando}: $\backslash$textit.\\
+	{\itshape Stile CORSIVO tramite la dichiarazione}: $\backslash$itshape.\\
+	\\
+	\textsc{Stile MAIUSCOLETTO tramite il comando}: $\backslash$textsc.\\
+	{\scshape Stile MAIUSCOLETTO tramite la dichiarazione}: $\backslash$scshape.\\
+	\\
+	\textbf{Stile GRASSETTO tramite il comando}: $\backslash$textbf.\\
+	{\bfseries Stile GRASSETTO tramite la dichiarazione}: $\backslash$bfseries.\\
+	\\
+	\textsl{Stile INCLINATO tramite il comando}: $\backslash$textsl.\\
+	{\slshape Stile INCLINATO tramite la dichiarazione}: $\backslash$slshape.\\
+	\\
+	\textrm{Stile TONDO tramite il comando}: $\backslash$textrm.\\
+	{\rmfamily Stile TONDO tramite la dichiarazione}: $\backslash$rmfamily.\\
+	\\
+	\textsf{Stile SENZA GRAZIE tramite il comando}: $\backslash$textsf.\\
+	{\sffamily Stile SENZA GRAZIE tramite la dichiarazione}: $\backslash$sffamily.\\
+	\\
+	\texttt{Stile MACCHINA PER SCRIVERE tramite il comando}: $\backslash$texttt.\\
+	{\ttfamily Stile MACCHINA PER SCRIVERE tramite la dichiarazione}: $\backslash$ttfamily.\\
+	\\
+	\underline{Testo SOTTOLINEATO tramite il comando}: $\backslash$underline.\\
+	\textcolor{blue}{Questa frase è COLORATA tramite il comando}: $\backslash$textcolor.\\
+	\colorbox{yellow}{Questa frase è EVIDENZIATA tramite il comando}: $\backslash$colorbox.\\
+	\\
+	\textit{\textbf{Questa frase è sia in CORSIVO sia in GRASSETTO}}.\\
+	\underline{{\ttfamily Questa frase è sia in MACCHINA DA SCRIVERE sia SOTTOLINEATA}}.
+	
+	
+	\section{Dimensione del font}
+	{\tiny Dimensione del testo TINY}.\\
+	{\scriptsize Dimensione del testo SCRIPTSIZE}.\\
+	{\footnotesize Dimensione del testo FOOTNOTESIZE}.\\
+	{\small Dimensione del testo SMALL}.\\
+	{\normalsize Dimensione del testo NORMALSIZE}.\\
+	{\large Dimensione del testo large}.\\
+	{\Large Dimensione del testo Large}.\\
+	{\LARGE Dimensione del testo LARGE}.\\
+	{\huge Dimensione del testo huge}.\\
+	{\Huge Dimensione del testo Huge}.
+	
+	
+	
+	\section{Note}
+	\subsection{Al margine}
+	Tramite il comando \textbf{$\backslash$marginpar} è possibile creare una nota\marginpar{Questa è una nota al margine.} al margine del foglio.
+	
+	\subsection{Piè di pagina}
+	Tramite il comando \textbf{$\backslash$footnote} si creano note\footnote{Questa è una nota al piè di pagina.} in fondo al foglio. Ogni volta le note vengono numerate così da poterle distinguere\footnote{Questa è una seconda nota.}.
+	
+	
+	\section{Ambienti testuali}
+	\subsection{Elenchi}
+	Elenco puntato:
+	\begin{itemize}
+		\item Primo punto.
+		\item Secondo punto.
+		\begin{itemize}
+			\item Sotto elenco puntato.
+			\item Secondo sotto punto.
+			\begin{itemize}
+				\item Terzo livello di elenco puntato.
+				\begin{itemize}
+					\item Quarto livello di elenco puntato.
+					\item [+] Punto personalizzato.
+					\item [>] Punto personalizzato.
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+		\item [@] Terzo punto.
+	\end{itemize}
+	Elenco numerato:
+	\begin{enumerate}
+		\item Primo punto.
+		\item Secondo punto.
+		\begin{enumerate}
+			\item Sotto elenco numerato.
+			\item Secondo sotto punto.
+			\begin{enumerate}
+				\item Terzo livello di elenco numerato.
+				\begin{enumerate}
+					\item Quarto livello di elenco numerato.
+					\item Nuovo elemento.
+				\end{enumerate}
+				\item Altro elemento.
+			\end{enumerate}
+		\end{enumerate}
+	\end{enumerate}
+	\newpage
+	Elenco misto:
+	\begin{itemize}
+		\item Primo punto.
+		\item Secondo punto.
+		\begin{enumerate}
+			\item Sotto elenco numerato.
+			\item Secondo sotto punto.
+			\begin{itemize}
+				\item Terzo livello di elenco puntato.
+				\begin{enumerate}
+					\item Quarto livello di elenco numerato.
+					\item Nuovo elemento.
+				\end{enumerate}
+				\item Altro elemento.
+			\end{itemize}
+		\end{enumerate}
+	\end{itemize}
+
+
+	\subsection{Allineamento del capoverso}
+	\begin{flushleft}
+		Questo testo è allineato a sinistra tramite \textbf{flushleft}.\\
+		Definizione del termine \textit{informatica} presa da Wikipedia: l'informatica è la scienza che si occupa del trattamento dell'informazione mediante procedure automatizzate, avendo in particolare per oggetto lo studio dei fondamenti teorici dell'informazione, della sua computazione a livello logico e delle tecniche pratiche per la sua implementazione e applicazione in sistemi elettronici automatizzati detti quindi \emph{sistemi informatici}\index{sistemi informatici}; come tale è una disciplina fortemente connessa con la logica matematica, l'automatica, l'elettronica e anche l'elettromeccanica.
+	\end{flushleft}
+	
+	\begin{flushright}
+		Questo testo è allineato a destra tramite \textbf{flushright}.\\
+		Definizione del termine \textit{informatica} presa da Wikipedia: l'informatica è la scienza che si occupa del trattamento dell'informazione mediante procedure automatizzate, avendo in particolare per oggetto lo studio dei fondamenti teorici dell'informazione, della sua computazione a livello logico e delle tecniche pratiche per la sua implementazione e applicazione in sistemi elettronici automatizzati detti quindi sistemi informatici; come tale è una disciplina fortemente connessa con la logica matematica, l'automatica, l'elettronica e anche l'\emph{elettromeccanica}\index{elettromeccanica}.
+	\end{flushright}
+	
+	\begin{center}
+		Questo testo è allineato al centro tramite \textbf{center}.\\
+		Definizione del termine \textit{informatica} presa da Wikipedia: l'informatica è la scienza che si occupa del trattamento dell'informazione mediante procedure automatizzate, avendo in particolare per oggetto lo studio dei fondamenti teorici dell'informazione, della sua computazione a livello logico e delle tecniche pratiche per la sua implementazione e applicazione in sistemi elettronici automatizzati detti quindi sistemi informatici; come tale è una disciplina fortemente connessa con la logica matematica, l'automatica, l'elettronica e anche l'elettromeccanica.
+	\end{center}
+	
+	
+	\subsection{Citazioni in display}
+	Giacomo Leopardi è stato un poeta, filosofo, scrittore, filologo italiano.
+	\begin{quoting}
+		``La vita e l'assoluta mancanza d'illusione, e quindi di speranza, sono cose contraddittorie.''
+	\end{quoting}
+	È ritenuto il maggior poeta dell'Ottocento italiano e una delle più importanti figure della letteratura mondiale.
+	
+	
+	\subsection{Poesie}
+	Poesia \textit{A Zacinto} di Ugo Foscolo:
+	\begin{verse}
+		Né più mai toccherò le sacre sponde\\
+		Ove il mio corpo fanciulletto giacque,\\
+		Zacinto mia, che te specchi nell'onde\\
+		Del greco mar, da cui vergine nacque
+		
+		Venere, e fea quelle isole feconde\\
+		Col suo primo sorriso, onde non tacque\\
+		Le tue limpide nubi e le tue fronde\\
+		L’inclito verso di colui che l'acque
+		
+		Cantò fatali, ed il diverso esiglio\\
+		Per cui bello di fama e di sventura\\
+		Baciò la sua petrosa Itaca Ulisse.
+		
+		Tu non altro che il canto avrai del figlio,\\
+		O materna mia terra; a noi prescrisse\\
+		Il fato illacrimata sepoltura.
+	\end{verse}
+	
+	
+	\subsection{Riferimenti incrociati}
+	Questo è un riferimento alla sezione \ref{sec:testo} (pagina \pageref{sec:testo}).
+	
+	
+	\subsection{Collegamento web}
+	Cliccando sul nome \href{https://www.youtube.com/channel/UCDq9FlqxaAZmgoLBgf5KtYA}{Programmazione Time} si verrà reindirizzati al canale YouTube.\\
+	\\
+	Clicca il link \url{www.google.com} per raggiungere il motore di ricerca Google.
+	
+	
+	
+	\chapter{Caratteri speciali e regole d'uso}
+	Tra    queste     parole    viene   inserito  un    solo     spazio. Mentre in questo caso ci sono ben cinque\space\space\space\space\space spazi vuoti.\\
+	\\
+	Tipologie di virgolette:
+	\begin{itemize}
+		\item  gli `apici';
+		\item le ``virgolette inglesi'';
+		\item le <<virgolette caporali>>.
+	\end{itemize}
+	Non si fa uso dei singoli 'apici' o delle classiche "virgolette".\\
+	\\
+	Tipologie di tratto:
+	\begin{itemize}
+		\item Trattino - normale;
+		\item Tratto -- con doppio trattino;
+		\item Lineetta --- con triplo trattino;
+		\item Simbolo meno $-$.
+	\end{itemize}
+	I tre puntini di sospensione \dots{} sono generati dal comando \textbf{$\backslash$dots\{\}}.\\
+	\\
+	Creazione di un apice mediante \textbf{$\backslash$ap\{\}}: sig.\ap{re} e sig.\ap{ra}.\\
+	Creazione di un pedice mediante \textbf{$\backslash$ped\{\}}: A\ped{1}, parola\ped{pedice}.\\
+	\\
+	Caratteri ``problematici'':
+	\begin{itemize}
+		\item Il dollaro \$
+		\item Il cancelletto \#
+		\item La percentuale \%
+		\item La `e' commerciale \&
+		\item L'accento circonflesso $\hat{}$
+		\item Il tilde $\tilde{}$
+		\item Il trattino basso \_
+		\item Le parentesi graffe \{ \}
+		\item La barra rovescia (\textit{backslash}) $\backslash$
+	\end{itemize}
+	
+	
+	
+	\chapter{Formule matematiche}
+	\section{Tipologia di formule}
+	\subsection{Formula inline}
+	Esistono tre modi per generare la \textbf{formula inline}:
+	\begin{enumerate}
+		\item Doppio uso del dollaro: $10\cdot 5 = 50$.
+		\item Parentesi tonde precedute dal backslash: \(45 / 3 = 15\).
+		\item Ambiente matematico \textbf{math}: \begin{math}
+			37 - 14 = 23
+		\end{math}
+	\end{enumerate}
+	\LaTeX cerca di comprimere meglio che può $\sum_{x=1}^{10}\frac{x}{5} = 11$ le formule matematiche in linea.
+	
+	
+	\subsection{Formula in display}
+	Esistono tre modi per generare la \textbf{formula in display}:
+	\begin{enumerate}
+		\item Ambiente matematico \textbf{equation}:
+		\begin{equation}
+			v = \frac{s}{t}
+		\end{equation}
+		
+		\item Parentesi quadre precedute dal backslash $\backslash$[ $\backslash$]:
+		\[
+		rad = \frac{\pi}{180}\theta
+		\]
+		
+		\item Ambiente matematico \textbf{displaymath}:
+		\begin{displaymath}
+			\alpha = \frac{\Delta\omega}{\Delta t}
+		\end{displaymath}
+	\end{enumerate}
+
+	
+	\section{Opzioni interessanti}
+	\subsection{Affiancare più espressioni}
+	Per affiancare più espressioni all'interno di un singolo ambiente si fa uso dei comandi: \textbf{$\backslash$quad} e \textbf{$\backslash$qquad} per spaziare le due formule.
+	\[
+	y = mx + q\qquad y = \frac{x - q}{m}
+	\]
+	
+	\subsection{Inserire una piccola porzione di testo}
+	Per inserire una piccola porzione di testo all'interno dell'ambiente si utilizza \textbf{$\backslash$text}:
+	\[
+	y = \sqrt{x} \quad\textrm{per $x\geq 0$}
+	\]
+	
+	
+	\section{Forme utili}
+	\begin{itemize}
+		\item Per creare l'esponente si utilizza l'accento circonflesso $\hat{}$ :
+		\[
+		y = ax^2 + bx + c\qquad y = e^{x - 5}
+		\]
+		
+		\item Per creare gli indici si utilizza il trattino basso \_ :
+		\[
+		x_1 + x_2 = k\qquad x_{a,\frac{\alpha}{2}}\cdot y_{z,i} = m
+		\]
+		
+		\item Per creare radici si utilizza il comando \textbf{$\backslash$[root]sqrt}:
+		\[
+		\sqrt{5x + 3}\qquad \sqrt[3]{\frac{2x^2+1}{5x}-1} \qquad \sqrt[\frac{1}{3}]{e^{x+1}}
+		\]
+		
+		\item Per creare una sommatoria si utilizza il comando \textbf{$\backslash$sum\_\{min\}$\hat{}$\{max\}}:
+		\[
+		\sum_{i=1}^{n}x_i\qquad \sum_{i=1}x_i\qquad \sum^{n}x\qquad \sum x
+		\]
+		
+		\item Per creare una produttoria si utilizza il comando \textbf{$\backslash$prod\_\{min\}$\hat{}$\{max\}}:
+		\[
+		\prod_{i=1}^{n}x_i\qquad \prod_{i=1}x_i\qquad \prod^{n}x\qquad \prod x
+		\]
+		
+		\item Per creare un limite si utilizza il comando\\
+		\textbf{$\backslash$lim\_\{variabile $\backslash$to valore\}}:
+		\[
+		\lim_{x\to 0}\frac{\sin(x)}{x} = 1\qquad \lim_{x\to 0^-}\frac{1}{x} = -\infty
+		\]
+		
+		\item Per creare un integrale si utilizza il comando \textbf{$\backslash$int\_\{min\}$\hat{}$\{max\}}:
+		\[
+		\int_{0}^{\alpha}f(x)\,dx \qquad \int_{b}f(x)\,dx \qquad \int^{a}f(x)\,dx \qquad \int f(x)\,dx
+		\]
+		Integrali multipli e curvilinei con i pacchetti \textbf{amsmath} ed \textbf{esint}:
+		\[
+		\iint_D f(x,y)\,dx\,dy \qquad \iint g\,dx\,dy \qquad
+		\iiint g \,dx\,dy\,dz \qquad \oint f(z)\,dz=2\pi i
+		\]
+		
+		\item Adattamento delle parentesi con \textbf{$\backslash$left} e \textbf{$\backslash$right}:\\
+		Senza ridimensionamento
+		\[
+		(\frac{\sqrt{5x+1}}{\int_{0}^{\alpha}x^3+\frac{e^x}{2}\,dx}) \qquad [\frac{\sqrt{5x+1}}{\int_{0}^{\alpha}x^3+\frac{e^x}{2}\,dx}] \qquad \{\frac{\sqrt{5x+1}}{\int_{0}^{\alpha}x^3+\frac{e^x}{2}\,dx}\}
+		\]
+		Con ridimensionamento automatico
+		\[
+		\left(\frac{\sqrt{5x+1}}{\int_{0}^{\alpha}x^3+\frac{e^x}{2}\,dx}\right) \qquad \left[\frac{\sqrt{5x+1}}{\int_{0}^{\alpha}x^3+\frac{e^x}{2}\,dx}\right] \qquad \left\{\frac{\sqrt{5x+1}}{\int_{0}^{\alpha}x^3+\frac{e^x}{2}\,dx}\right\}
+		\]
+		
+		\item Per scrivere sopra o sotto a delle espressioni potete usare entrambe le possibilità:
+		\[
+		\underbrace{1 + 2, \dots, n}_{\frac{n(n+1)}{2}} + (n+1) \qquad \overbrace{1 + 2, \dots, n}^{\frac{n(n+1)}{2}} + (n+1)
+		\]
+		\[
+		\underset{y=}{ax^2 + bx + c} \qquad \overset{y=}{ax^2 + bx + c}
+		\]
+		
+		\item Per creare sistemi di equazioni su usa l'ambiente matematico \textbf{cases}:
+		\[
+		\begin{cases}
+			x + y = 2\\
+			x - y = 0
+		\end{cases} \qquad \left\{\!\begin{array}{c}
+			x + y = 2\\
+			x - y = 0
+		\end{array}\right.
+		\]
+		Creazione di insiemi:
+		\[
+		\left\{\!\begin{array}{c | c}
+			\frac{1}{n^2} & n\in\mathbb{N}
+		\end{array}\!\right\}
+		\]
+	\end{itemize}
+
+
+	\section{Vettori e matrici}
+	\begin{itemize}
+		\item Matrice e vettori senza parentesi:
+		\[
+		\begin{matrix}
+			1 & 1 & \dots & 1\\
+			\vdots & \vdots & \ddots & \vdots\\
+			1 & 1 & \dots & 1
+		\end{matrix} \qquad \begin{matrix}
+			1 & 1 & \dots & 1
+		\end{matrix} \qquad \begin{matrix}
+			1\\
+			\vdots\\
+			1
+		\end{matrix}
+		\]
+		
+		\item Matrice e vettori con parentesi tonde:
+		\[
+		\begin{pmatrix}
+			1 & 1 & \dots & 1\\
+			\vdots & \vdots & \ddots & \vdots\\
+			1 & 1 & \dots & 1
+		\end{pmatrix} \qquad \begin{pmatrix}
+			1 & 1 & \dots & 1
+		\end{pmatrix} \qquad \begin{pmatrix}
+			1\\
+			\vdots\\
+			1
+		\end{pmatrix}
+		\]
+		
+		\item Matrice e vettori con parentesi quadre:
+		\[
+		\begin{bmatrix}
+			1 & 1 & \dots & 1\\
+			\vdots & \vdots & \ddots & \vdots\\
+			1 & 1 & \dots & 1
+		\end{bmatrix} \qquad \begin{bmatrix}
+			1 & 1 & \dots & 1
+		\end{bmatrix} \qquad \begin{bmatrix}
+			1\\
+			\vdots\\
+			1
+		\end{bmatrix}
+		\]
+		
+		\item Matrice e vettori con parentesi graffe:
+		\[
+		\begin{Bmatrix}
+			1 & 1 & \dots & 1\\
+			\vdots & \vdots & \ddots & \vdots\\
+			1 & 1 & \dots & 1
+		\end{Bmatrix} \qquad \begin{Bmatrix}
+			1 & 1 & \dots & 1
+		\end{Bmatrix} \qquad \begin{Bmatrix}
+			1\\
+			\vdots\\
+			1
+		\end{Bmatrix}
+		\]
+		
+		\item Matrice e vettori con linea:
+		\[
+		\begin{vmatrix}
+			1 & 1 & \dots & 1\\
+			\vdots & \vdots & \ddots & \vdots\\
+			1 & 1 & \dots & 1
+		\end{vmatrix} \qquad \begin{vmatrix}
+			1 & 1 & \dots & 1
+		\end{vmatrix} \qquad \begin{vmatrix}
+			1\\
+			\vdots\\
+			1
+		\end{vmatrix}
+		\]
+		
+		\item Matrice e vettori con doppia linea:
+		\[
+		\begin{Vmatrix}
+			1 & 1 & \dots & 1\\
+			\vdots & \vdots & \ddots & \vdots\\
+			1 & 1 & \dots & 1
+		\end{Vmatrix} \qquad \begin{Vmatrix}
+			1 & 1 & \dots & 1
+		\end{Vmatrix} \qquad \begin{Vmatrix}
+			1\\
+			\vdots\\
+			1
+		\end{Vmatrix}
+		\]
+	\end{itemize}
+
+
+	\section{Raggruppamento e gestione delle formule}
+	\subsection{Spezzare formule}
+	Per spezzare una formula lunga si utilizza \textbf{multline}:
+	\begin{multline}
+		z = a + b + c + d\\
+		+ e + f + g + h\\
+		+ i + l + m + n\\
+		+ o + p + q + r\\
+		+ s + u + t + v
+	\end{multline}
+	Per spezzare una formula incolonnandola si utilizza \textbf{split}:
+	\[
+	\begin{split}
+		z &= a + b + c + d\\
+		&= e + f + g + h\\
+		&= i + l + m + n\\
+		&= o + p + q + r\\
+		&= s + u + t + v
+	\end{split}
+	\]
+	
+	
+	\subsection{Raggruppare formule}
+	Per raggruppare formule si utilizza \textbf{gather}:
+	\begin{gather}
+		y = mx + q\\
+		y = ax^2 + bx + c\\
+		y = \sin(x)
+	\end{gather}
+	Per raggruppare formule incolonnandole si utilizza \textbf{align}:
+	\begin{align}
+		y &= mx + q	& y &= ax^2 + bx + c & y &= \sin(x)\\
+		x^2 + y^2 + ax + by + c &= 0 & xy &= k & y &= \tan(x)
+	\end{align}
+	
+	
+	\section{Teoremi ed enunciati}
+	\begin{teorema}[Weierstrass]
+		Una funzione $f:Dom(f)\subseteq \mathbb{R}\rightarrow\mathbb{R}$ definita e continua su un insieme compatto (un insieme chiuso e limitato) ammette in esso un massimo e un minimo assoluti.
+	\end{teorema}
+	\begin{teorema}[Rolle]
+		Sia $f:[a,b]\rightarrow\mathbb{R}$ una funzione continua in $[a,b]$ e derivabile in $(a,b)$. Se la funzione assume lo stesso valore agli estremi dell'intervallo, ossia
+		\[
+		f(a) = f(b)
+		\]
+		allora esiste almeno un punto $x_0\in(a,n)$ tale che
+		\[
+		f'(x_0) = 0
+		\]
+	\end{teorema}
+	\begin{proof}
+		Dato che sono soddisfatte le ipotesi del Teorema di Weierstrass, sappiamo che la funzione $y = f(x)$ assume in $[a,b]$ un massimo $M$ e un minimo $m$ assoluti.\\
+		Ci sono così due possibilità:
+		\begin{itemize}
+			\item Se il massimo e il minimo assoluto coincidono, ossia $M = m$, allora $y = f(x)$ è costante. Di conseguenza $f'(x) = 0$ per ogni punto $x$ di $(a,b)$ il teorema vale sicuramente.
+			
+			\item Se invece $m < M$, poiché nell'ipotesi $f(a) = f(b)$, almeno uno dei due valori $m$ oppure $M$ è assunto dalla funzione in un punto $x_0$ interno all'intervallo. Se $f(x_0) = M$, allora $x_0$ è un punto estremante e per il Teorema di Fermat risulta che $f'(x_0) = 0$.
+		\end{itemize}
+	\end{proof}
+
+
+	\chapter{Importare immagini}
+	Le immagini vengono importate aggiungendo il pacchetto \textbf{graphicx} e utilizzando il comando \textbf{$\backslash$includegraphics[opzioni]\{nome immagine\}}:\\
+	\includegraphics[width=0.3\textwidth]{logo}
+	
+	
+	\section{Didascalie laterali}
+	\begin{SCfigure}[50][h!]
+		\includegraphics[width=0.3\textwidth]{logo}
+		\caption{Logo del canale YouTube con didascalia laterale}
+		\label{fig:laterale}
+	\end{SCfigure}
+
+	
+	\newpage
+	\section{Oggetti multipli}
+	\begin{figure}[h!]
+		\centering
+		\subfloat[][\textbf{\emph{Logo 1 del canale}}]{\includegraphics[width=0.3\textwidth]{logo}}\quad
+		\subfloat[][\textbf{\emph{Logo 2 del canale}}]{\includegraphics[width=0.3\textwidth]{logo}}\\
+		\subfloat[][\textbf{\emph{Logo 3 del canale}}]{\includegraphics[width=0.3\textwidth]{logo}}\quad
+		\subfloat[][\textbf{\emph{Logo 4 del canale}}]{\includegraphics[width=0.3\textwidth]{logo}}
+		\caption{Dentro all'ambiente \textbf{figure} ci sono 4 sotto figure}
+		\label{fig:sotto}
+	\end{figure}
+	
+	
+	\section{Immagine immersa nel testo}
+	\begin{wrapfloat}{figure}{i}{0pt}
+		\includegraphics[width=0.3\textwidth]{vecchio}
+		\caption{Logo originale del canale}
+	\end{wrapfloat}
+	Il canale YouTube \textbf{Programmazione Time} è stato creato il 22 settembre del 2016. Inizialmente doveva essere una piattaforma sul quale potessi caricare con facilità i video sul linguaggio C per aiutare i miei compagni di classe, poiché Whatsapp limitava la condivisione e peggiorava la qualità, mentre Telegram lo possedevano in pochi.
+	
+	Non mi sarei mai aspettato di continuare quella strada presa così per caso, dopotutto non avevo nemmeno chissà quali strumenti di registrazione: un vecchio portatile con Windows XP, connessione internet a 3 Mb/s, il microfono dello smartphone (Samsung Galaxy Young). Tuttavia avevo e ho tanta buona forza di volontà, solo questo mi ha permesso di non fermarmi mai.
+	
+	Oggigiorno il canale conta più di 17000 iscritti e ha l'obbiettivo di portare corsi universitari (e non) relativi all'ambito informatico. C'è ancora molta strada da compiere, riformare determinati contenuti, condividere ciò che ho appreso al pubblico sperando possa rivelarsi utile.
+	
+	
+	
+	\chapter{Creare tabelle}
+	L'ambiente predisposto per le tabelle è \textbf{tabular}, dove all'interno delle graffe si specificano i descrittori delle colonne:
+	\begin{center}
+		\begin{tabular}{l c r}
+			Cella 1 & Cella 2 & Cella 3\\
+			Cella 4 & Cella 5 & Cella 6\\
+			Cella 7 & Cella 8 & Cella 9
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tabular}{l | c r}
+			\hline
+			Cella 1 & Cella 2 & Cella 3\\ [0.5ex]
+			\hline
+			Cella 4 & Cella 5 & Cella 6\\
+			\hline
+			Cella 7 & Cella 8 & Cella 9\\ [1ex]
+			\hline
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tabular}{ | m{8em} | m{2cm} | m{1cm} | } 
+			\hline
+			Cella 1 & Cella 2 & Cella 3\\
+			\hline
+			Cella 4 & Cella 5 & Cella 6\\
+			\hline
+			Cella 7 & Cella 8 & Cella 9\\
+			\hline
+		\end{tabular}
+	\end{center}
+
+
+	\section{Unire righe e colonne}
+	Per unire le colonne si utilizza il comando \textbf{$\backslash$multicolum}:
+	\begin{center}
+		\begin{tabular}{| c | c | c |}
+			\hline
+			\multicolumn{3}{|c|}{Unione} \\
+			\hline
+			Cella 4 & Cella 5 & Cella 6\\
+			\hline
+			Cella 7 & Cella 8 & Cella 9\\
+			\hline
+		\end{tabular}
+	\end{center}
+	Per unire le righe si utilizza il comando \textbf{$\backslash$multirow}:
+	\begin{center}
+		\begin{tabular}{| c | c | c |}
+			\hline
+			\multirow{3}{4em}{Unione} & Cella 2 & Cella 3\\
+			& Cella 5 & Cella 6\\
+			& Cella 8 & Cella 9\\
+			\hline
+		\end{tabular}
+	\end{center}
+	\newpage
+	Tabella che appare nell'indice:
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|| c | c ||}
+			\hline
+			Cella 1 & Cella 2\\
+			Cella 3 & Cella 4\\
+			Cella 5 & Cella 6\\
+			Cella 7 & Cella 8\\
+			\hline
+		\end{tabular}
+		\caption{Tabella con doppia linea}
+		\label{tab:tabella}
+	\end{table}
+	
+	
+	
+	\chapter{Bibliografia}
+	\section{Automatica}
+	Per citare un'opera nel documento si utilizza \textbf{$\backslash$cite}\\(lo schema è \textbf{authoryear-comp}):\\
+	\cite{man:sposi}\\
+	\cite[1]{man:sposi}\\
+	\cite[8-13]{man:sposi}\\
+	\cite[vedi][]{man:sposi}\\
+	\cite[vedi][1]{man:sposi}\\
+	\\
+	Ogni contenuto citato apparirà poi nella sezione bibliografica:\\
+	\cite{tube:canale}\\
+	\cite[vedi][]{tube:canale}\\
+	\cite[vedi][20]{corriere:giornale}\\
+	\\
+	Altra serie di comandi appartenenti a \textbf{biblatex}:
+	\begin{itemize}
+		\item Usare \textbf{$\backslash$textcite} quando la citazione è parte integrante del discorso: \textcite{man:sposi};
+		
+		\item Usare \textbf{$\backslash$parencite} per racchiudere la citazione tra parentesi quadre: \parencite{corriere:giornale};
+		
+		\item Usare \textbf{$\backslash$footcite} quando la citazione dev'essere una nota\footcite{tube:canale};
+		
+		\item Usare \textbf{$\backslash$supercite} per mettere la citazione in apice: \supercite{man:sposi};
+		
+		\item Usare \textbf{$\backslash$fullcite} quando si vuole riportare la citazione per intero: \fullcite{man:sposi};
+	\end{itemize}
+	Per singole parti di citazione:
+	\begin{itemize}
+		\item Solo autore \citeauthor{tube:canale}, con \textbf{$\backslash$citeauthor}.
+		\item Solo anno \citeyear{corriere:giornale}, con \textbf{$\backslash$citeyear}.
+	\end{itemize}
+		
+	\printbibliography
+	
+	\newpage
+	\section{Manuale}
+	Per le citazioni manuali si può utilizzare il comando \textbf{$\backslash$cite} come visto in precedenza.
+
+	\begin{thebibliography}{9}
+		\bibitem{Ungaretti}{giuseppe:ungaretti}
+		Ungaretti, Giuseppe (1978),
+		\emph{Lettere dal fronte a Gherardo Marone.}, A. Mondadori, Milano.
+		
+		\bibitem{eco:tesi}
+		Eco, Umberto (1977),
+		\emph{Come si fa una tesi di
+			laurea}, Bompiani, Milano.
+	\end{thebibliography}
+
+
+	\chapter{Indice analitico}
+	La creazione dell'\emph{indice analitico}\index{indice analitico|see{Capitolo 8}} ha bisogno del pacchetto \textbf{imakeidx}, inoltre nel preambolo si deve inserire il comando \textbf{$\backslash$makeindex} e prima della fine del documento inserire \textbf{$\backslash$printidex}.
+	
+	
+	\chapter{Creare nuovi comandi e ambienti}
+	\section{Nuovi comandi}
+	La creazione di nuovi comandi è dato dal comando \textbf{$\backslash$newcommand} nel preambolo, mentre per ridefinire il comando si usa \textbf{$\backslash$renewcommand}.\\
+	\\
+	\predefinito\\
+	\comando{Questo comando è stato creato unendo altri comandi}.\\
+	\\
+	\renewcommand{\comando}[1]{\textsc{#1}}
+	\comando{È stato modificato il comando usato in precedenza}.
+	
+	
+	\section{Nuovi ambienti}
+	La creazione di nuovi ambienti è dato dal comando \textbf{$\backslash$newenviroment} nel preambolo, mentre per ridefinire il comando si usa \textbf{$\backslash$renewenviroment}.
+	\begin{corsivo}
+		\item Ogni elemento è già in corsivo;
+		
+		\item Sotto elenco:
+		\begin{corsivo}
+			\item Continuano a valere le regole viste per gli elenchi;
+			
+			\item Sotto elemento 2;
+		\end{corsivo}
+		
+		\item Elemento 2;
+		
+		\item Elemento 3.
+	\end{corsivo}
+	
+	
+	
+	\printindex
+\end{document}
